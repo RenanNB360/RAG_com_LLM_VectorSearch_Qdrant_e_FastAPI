@@ -1,0 +1,29 @@
+# Instale as dependências
+pip install -r requirements.txt
+
+# Crie o container docker
+docker run --name vectordb -dit -p 6333:6333 qdrant/qdrant
+
+# Crie o banco de dados vetorial
+python rag.py Documentos
+
+# Acesse o Dashboard
+http://localhost:6333/dashboard
+
+# Incialize a API
+fastapi dev backend/main.py
+
+# Execute o app web do streamlit
+streamlit run web_app.py
+
+# Pasta Documentos
+A aplicação suporta documentos no formato:
+.docx
+.pptx
+.pdf
+.txt
+
+# Obs:
+Os arquivos de documentos não foram anexados
+para não ocupar espaço no repositório
+
